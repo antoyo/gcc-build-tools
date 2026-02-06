@@ -31,7 +31,8 @@ function setup_default_config()
         "--disable-werror"
     )
 
-    local enable_languages="c,c++"
+    # TODO: add cli argument to disable the c++ frontend.
+    local enable_languages="c"
     local CPP_COMPILER_NAME="${TARGET}-g++"
 
     if [[ ${enable_languages} = "c" ]]; then
