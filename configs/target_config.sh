@@ -48,8 +48,12 @@ function setup_default_config()
         "--prefix=${INSTALL}"
         "--disable-nls"
         "--disable-bootstrap"
-        "--enable-languages=${enable_languages}"
+        # TODO: add a cli flag to add other languages.
+        "--enable-languages=${enable_languages},jit"
         "--includedir=${INSTALL}/${TARGET}/include"
+        "--disable-libatomic"
+        # TODO: only add the following flag if jit is enabled:
+        "--enable-host-shared"
     )
 
     # Notes:
@@ -181,7 +185,8 @@ function setup_linux_default_buildfuncs() {
                  "build_gcc_final"
                  "build_gmp"
                  "build_mpfr"
-                 "build_gdb"
+                 # TODO: add option to disable gdb since it takes time to build.
+                 #"build_gdb"
     )
 }
 
