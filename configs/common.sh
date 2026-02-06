@@ -30,7 +30,8 @@ function setup_common_urls_git() {
     setup_common_urls
 
     BINUTILS_GIT_URL="git://sourceware.org/git/binutils-gdb.git"
-    GCC_GIT_URL="git://gcc.gnu.org/git/gcc.git"
+    # TODO: allow this variable to be configurable.
+    GCC_GIT_URL="https://github.com/rust-lang/gcc"
     GLIBC_GIT_URL="git://sourceware.org/git/glibc.git"
     LINUX_GIT_URL="git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
     NEWLIB_GIT_URL="git://sourceware.org/git/newlib-cygwin.git"
