@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 
 function config_arm64() {
-    TARGET="aarch64-linux-gnu" 
+    TARGET="aarch64-unknown-linux-gnu"
     # shellcheck disable=SC2034
     LINUX_ARCH="arm64"
 

@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 
 function config_arm() {
-    TARGET="arm-linux-gnueabi"
+    TARGET="arm-unknown-linux-gnueabi"
     # shellcheck disable=SC2034
     LINUX_ARCH="arm"
 
