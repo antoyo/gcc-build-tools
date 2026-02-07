@@ -62,15 +62,16 @@ function call_cmd() {
         local tmp_file
         tmp_file=$(mktemp)
 
-        if eval "${cmd_to_call}" > "${tmp_file}" 2>&1; then
-            # Command succeeded, remove the temp file
+        eval "${cmd_to_call}" > "${tmp_file}" 2>&1
+        local exit_code=$?
+        if [ $exit_code -eq 0 ]; then
             rm -f "${tmp_file}"
         else
-            # Command failed, display the output
             echo "Command failed. Output:"
             cat "${tmp_file}"
             rm -f "${tmp_file}"
         fi
+        return $exit_code
     fi
 }
 
