@@ -51,8 +51,8 @@ function setup_default_config()
         "--disable-bootstrap"
         # TODO: add a cli flag to add other languages.
         "--enable-languages=${enable_languages},jit"
-        "--includedir=${INSTALL}/${TARGET}/include"
-        "--disable-libatomic"
+        # FIXME: seems like there's a bug in these scripts that makes this includedir being appened to the prefix.
+        #"--includedir=${INSTALL}/${TARGET}/include"
         # TODO: only add the following flag if jit is enabled:
         "--enable-host-shared"
     )

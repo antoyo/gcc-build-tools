@@ -17,7 +17,7 @@ function build_gcc_stage_1() {
 
     mkdir -p "${BUILD_DIR}/build-gcc"
     cd "${BUILD_DIR}/build-gcc" || die "GCC build folder does not exist!"
-    call_cmd "${SOURCES_DIR}/gcc-${GCC}/configure" "${GCC_CONFIGURATION[@]}"
+    call_cmd "${SOURCES_DIR}/gcc-${GCC}/configure" "${GCC_CONFIGURATION[@]}" --disable-libatomic
     call_cmd make "${JOBS}" all-gcc || die "Error while building gcc stage1!" -n
     call_cmd make "${JOBS}" install-gcc DESTDIR="${DEST_DIR}" || die "Error while installing gcc stage1!" -n
 
