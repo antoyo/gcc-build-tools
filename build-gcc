@@ -288,7 +288,7 @@ function setup_environment() {
     # TODO: allow configuring this path.
     INSTALL_DIR="$HOME/xgcc"
     INSTALL_DIR_NAME="cross-tool-${ARCH}-gcc${VERSION}"
-    INSTALL="${INSTALL_DIR}/${INSTALL_DIR_NAME}"
+    INSTALL="${INSTALL_DIR}/${INSTALL_DIR_NAME}/usr"
 
     # Maybe not needed!?
     export PATH=${INSTALL}/bin:${PATH}
