@@ -19,7 +19,7 @@ function build_gcc_stage_1() {
     cd "${BUILD_DIR}/build-gcc" || die "GCC build folder does not exist!"
     call_cmd "${SOURCES_DIR}/gcc-${GCC}/configure" "${GCC_CONFIGURATION[@]}"
     call_cmd make "${JOBS}" all-gcc || die "Error while building gcc stage1!" -n
-    call_cmd make "${JOBS}" install-gcc || die "Error while installing gcc stage1!" -n
+    call_cmd make "${JOBS}" install-gcc DESTDIR="${DEST_DIR}" || die "Error while installing gcc stage1!" -n
 
     set_build_state "${FUNCNAME[0]}"
 }
@@ -36,7 +36,7 @@ function build_gcc_stage_2() {
     mkdir -p "${BUILD_DIR}/build-gcc"
     cd "${BUILD_DIR}/build-gcc" || die "GCC build folder does not exist!"
     call_cmd make "${JOBS}" all-target-libgcc || die "Error while building gcc stage2" -n
-    call_cmd make install-target-libgcc || die "Error while building gcc stage2" -n
+    call_cmd make install-target-libgcc DESTDIR="${DEST_DIR}" || die "Error while building gcc stage2" -n
 
     set_build_state "${FUNCNAME[0]}"
 }
@@ -57,7 +57,7 @@ function build_gcc_final() {
     fi
 
     call_cmd make "${JOBS}" all || die "Error while building gcc final" -n
-    call_cmd make install || die "Error while gcc final install" -n
+    call_cmd make install DESTDIR="${DEST_DIR}" || die "Error while gcc final install" -n
 
     set_build_state "${FUNCNAME[0]}"
 }

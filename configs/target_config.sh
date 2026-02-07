@@ -75,7 +75,7 @@ function setup_default_config()
         "CXX=${CPP_COMPILER_NAME}"
         "--host=${TARGET}"
         "--prefix=${INSTALL}/${TARGET}"
-        "--with-headers=${INSTALL}/${TARGET}/include"
+        "--with-headers=${DEST_DIR}${INSTALL}/${TARGET}/include"
     )
 
     NEWLIB_BASE_CONFIGURATION=(

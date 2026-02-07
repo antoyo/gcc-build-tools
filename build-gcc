@@ -288,14 +288,21 @@ function setup_environment() {
     # TODO: allow configuring this path.
     INSTALL_DIR="$HOME/xgcc"
     INSTALL_DIR_NAME="cross-tool-${ARCH}-gcc${VERSION}"
-    INSTALL="${INSTALL_DIR}/${INSTALL_DIR_NAME}/usr"
+    DEST_DIR="${INSTALL_DIR}/${INSTALL_DIR_NAME}"
+    INSTALL="/usr"
 
     # Maybe not needed!?
-    export PATH=${INSTALL}/bin:${PATH}
+    export PATH=${DEST_DIR}${INSTALL}/bin:${PATH}
 
     mkdir -p "${SOURCES_DIR}"
     mkdir -p "${BUILD_STATE_DIR}"
-    mkdir -p "${INSTALL}"
+    mkdir -p "${DEST_DIR}"
+
+    echo '1. *****************'
+    echo $PATH
+    echo '2. *****************'
+    #ls ${DEST_DIR}${INSTALL}
+    echo '3. *****************'
 }
 
 # Parse parameters
