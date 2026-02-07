@@ -34,24 +34,24 @@ function build_binutils_libs() {
     call_cmd make "${JOBS}" all-libiberty || die "Error while building target-libiberty!" -n
     call_cmd make "${JOBS}" install-libiberty || die "Error while installing target-libiberty!" -n
 
-    mkdir -p "${DEST_DIR}${INSTALL}"/bfd/{bfd,include/elf,libiberty}
-    cp bfd/bfd.h bfd/.libs/libbfd.a "${DEST_DIR}${INSTALL}"/bfd/bfd/
+    mkdir -p "${INSTALL}"/bfd/{bfd,include/elf,libiberty}
+    cp bfd/bfd.h bfd/.libs/libbfd.a "${INSTALL}"/bfd/bfd/
 
 	if [[ -e bfd/bfd_stdint.h ]]; then
 		# Binutils 2.32+ includes this header.
-		cp bfd/bfd_stdint.h "${DEST_DIR}${INSTALL}"/bfd/bfd/
+		cp bfd/bfd_stdint.h "${INSTALL}"/bfd/bfd/
 	fi
 
-    cp libiberty/libiberty.a "${DEST_DIR}${INSTALL}"/bfd/libiberty/
+    cp libiberty/libiberty.a "${INSTALL}"/bfd/libiberty/
 
 	cp "${SOURCES_DIR}/binutils-${BINUTILS}"/include/{ansidecl,filenames,hashtab,libiberty,symcat}.h \
-		"${DEST_DIR}${INSTALL}"/bfd/include/
+		"${INSTALL}"/bfd/include/
 
 	if [[ -e "${SOURCES_DIR}/binutils-${BINUTILS}"/include/diagnostics.h ]]; then
 		# Binutils 2.31+ includes this header.
-		cp "${SOURCES_DIR}/binutils-${BINUTILS}"/include/diagnostics.h "${DEST_DIR}${INSTALL}"/bfd/include/
+		cp "${SOURCES_DIR}/binutils-${BINUTILS}"/include/diagnostics.h "${INSTALL}"/bfd/include/
 	fi
-    cp "${SOURCES_DIR}/binutils-${BINUTILS}"/include/elf/*.h "${DEST_DIR}${INSTALL}"/bfd/include/elf/
+    cp "${SOURCES_DIR}/binutils-${BINUTILS}"/include/elf/*.h "${INSTALL}"/bfd/include/elf/
 
     set_build_state "${FUNCNAME[0]}"
 }

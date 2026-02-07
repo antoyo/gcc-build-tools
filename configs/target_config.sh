@@ -18,7 +18,7 @@ function setup_default_config()
     # for gdb down below we add --disable-binutils
     BINUTILS_BASE_CONFIG=(
         "--target=${TARGET}"
-        "--prefix=${INSTALL}"
+        "--prefix=${PREFIX}"
         "--disable-nls"
         "--disable-werror"
         "--disable-gdb"
@@ -27,7 +27,7 @@ function setup_default_config()
 
     ELF2FLT_BASE_CONFIG=(
         "--with-binutils-build-dir=${INSTALL}/bfd"
-        "--prefix=${INSTALL}"
+        "--prefix=${PREFIX}"
         "--disable-werror"
     )
 
@@ -46,7 +46,7 @@ function setup_default_config()
     # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=92484
     GCC_BASE_CONFIG=(
         "--target=${TARGET}"
-        "--prefix=${INSTALL}"
+        "--prefix=${PREFIX}"
         "--disable-nls"
         "--disable-bootstrap"
         # TODO: add a cli flag to add other languages.
@@ -74,13 +74,13 @@ function setup_default_config()
         "CC=${TARGET}-gcc"
         "CXX=${CPP_COMPILER_NAME}"
         "--host=${TARGET}"
-        "--prefix=${INSTALL}/${TARGET}"
-        "--with-headers=${DEST_DIR}${INSTALL}/${TARGET}/include"
+        "--prefix=${PREFIX}/${TARGET}"
+        "--with-headers=${INSTALL}/${TARGET}/include"
     )
 
     NEWLIB_BASE_CONFIGURATION=(
         "--target=${TARGET}"
-        "--prefix=${INSTALL}"
+        "--prefix=${PREFIX}"
     )
 
     NEWLIB_NANO_INSTALL_DIR="${INSTALL}/${TARGET}/newlib-nano"
@@ -107,7 +107,7 @@ function setup_default_config()
     # https://sourceware.org/pipermail/gdb/2022-March/049960.html
     GDB_BASE_CONFIG=(
         "--target=${TARGET}"
-        "--prefix=${INSTALL}"
+        "--prefix=${PREFIX}"
         "--with-libgmp-prefix=${GMP_INSTALL_DIR}"
         "--with-gmp=${GMP_INSTALL_DIR}"
         "--with-mpfr=${MPFR_INSTALL_DIR}"
@@ -118,12 +118,12 @@ function setup_default_config()
     )
 
     MINGW_HEADER_BASE_CONFIG=(
-        "--prefix=${INSTALL}/${TARGET}"
+        "--prefix=${PREFIX}/${TARGET}"
         "--host=${TARGET}"
     )
 
     MINGW_CRT_BASE_CONFIG=(
-        "--prefix=${INSTALL}/${TARGET}"
+        "--prefix=${PREFIX}/${TARGET}"
         "--with-sysroot=${INSTALL}/${TARGET}"
         "--host=${TARGET}"
     )
@@ -133,7 +133,7 @@ function setup_default_config()
     # https://bugs.gentoo.org/787662
     MINGW_WINPTHREADS_BASE_CONFIG=(
         "CFLAGS='-fno-expensive-optimizations'"
-        "--prefix=${INSTALL}/${TARGET}"
+        "--prefix=${PREFIX}/${TARGET}"
         "--host=${TARGET}"
         "--disable-multilib"
     )
